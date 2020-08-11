@@ -11,7 +11,7 @@ export const OrderForm: React.FC = () => {
 
   useEffect(() => {
     fetchProducts();
-  }, []);
+  }, [fetchProducts]);
 
   const submit = handleSubmit(data => {
     console.log(data);
@@ -30,18 +30,18 @@ export const OrderForm: React.FC = () => {
           <legend>Make an order</legend>
           <label htmlFor="drink">Drinks</label>
           <select ref={register} name="drink" id="drink">
-            {drinks.map(drink => (
-              <option key={drink.name} value={drink.name}>
-                {drink.displayName} - ${drink.price}
+            {drinks.map(({ name, displayName, price }) => (
+              <option key={name} value={name}>
+                {displayName} - ${price}
               </option>
             ))}
           </select>
 
           <label htmlFor="drink">Burgers</label>
           <select ref={register} name="burger" id="burger">
-            {burgers.map(burger => (
-              <option key={burger.name} value={burger.name}>
-                {burger.displayName} - ${burger.price}
+            {burgers.map(({ name, displayName, price }) => (
+              <option key={name} value={name}>
+                {displayName} - ${price}
               </option>
             ))}
           </select>
