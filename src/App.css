@@ -1,5 +1,26 @@
 .App {
   text-align: center;
+  width: 40%;
+  margin: 0 auto;
+}
+
+fieldset {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+select {
+  margin: 5px auto;
+}
+
+button {
+  margin: 5px auto;
+}
+
+table {
+  width: 100%;
 }
 
 .App-logo {

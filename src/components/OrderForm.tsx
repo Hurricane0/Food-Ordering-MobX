@@ -4,17 +4,18 @@ import { useStores } from './StoresProvider';
 import { useObserver } from 'mobx-react-lite';
 
 export const OrderForm: React.FC = () => {
-  const { productsStore } = useStores();
+  const { productsStore, ordersStore } = useStores();
   const { register, handleSubmit } = useForm();
 
   const { fetchProducts } = productsStore;
+  const { addOrder } = ordersStore;
 
   useEffect(() => {
     fetchProducts();
   }, [fetchProducts]);
 
-  const submit = handleSubmit(data => {
-    console.log(data);
+  const onSubmit = handleSubmit(data => {
+    addOrder(data.drink, data.burger);
   });
 
   return useObserver(() => {
@@ -25,7 +26,7 @@ export const OrderForm: React.FC = () => {
     }
 
     return (
-      <form onSubmit={submit}>
+      <form onSubmit={onSubmit}>
         <fieldset>
           <legend>Make an order</legend>
           <label htmlFor="drink">Drinks</label>
